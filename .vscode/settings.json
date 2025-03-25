@@ -1,0 +1,7 @@
+{
+    "cmake.sourceDirectory": "/home/yonathan/Documentos/info2/practica1",
+    "files.associations": {
+        "iostream": "cpp",
+        "ostream": "cpp"
+    }
+}

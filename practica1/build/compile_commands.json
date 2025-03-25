@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/yonathan/Documentos/info2/practica1/build",
+  "command": "/usr/bin/g++   -g -std=gnu++17 -o CMakeFiles/practica1.dir/main.cpp.o -c /home/yonathan/Documentos/info2/practica1/main.cpp",
+  "file": "/home/yonathan/Documentos/info2/practica1/main.cpp",
+  "output": "CMakeFiles/practica1.dir/main.cpp.o"
+}
+]

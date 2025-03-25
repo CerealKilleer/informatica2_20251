@@ -1,0 +1,54 @@
+# Archivos de compilación
+*.o
+*.obj
+*.out
+*.exe
+*.dll
+*.so
+*.dylib
+*.a
+*.lib
+
+# Directorios de compilación
+/build/
+/bin/
+/dist/
+/Debug/
+/Release/
+
+# Archivos generados por CMake
+CMakeCache.txt
+CMakeFiles/
+Makefile
+cmake_install.cmake
+
+# Archivos de configuración del IDE
+*.code-workspace
+*.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# Archivos de proyectos de Visual Studio
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.sln
+*.ncb
+*.sdf
+*.opensdf
+*.VC.db
+*.ipch
+
+# Archivos de Qt Creator
+*.pro.user
+*.qmake.stash
+
+# Archivos de depuración
+*.dSYM/
+*.gcda
+*.gcno
+*.gcov
+
+# Archivos de logs y temporales
+*.log
+*.tmp

@@ -38,7 +38,7 @@
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 6,
+				"line" : 7,
 				"parent" : 0
 			}
 		]
@@ -79,6 +79,10 @@
 		{
 			"backtrace" : 2,
 			"id" : "lib_binary_numbers::@145eef247bfb46b6828c"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "lib_cypher_decipher::@145eef247bfb46b6828c"
 		}
 	],
 	"id" : "practica_03::@90a2315b7a9c97cd24d2",
@@ -97,6 +101,11 @@
 			{
 				"backtrace" : 2,
 				"fragment" : "../src/liblib_binary_numbers.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "../src/liblib_cypher_decipher.a",
 				"role" : "libraries"
 			}
 		],

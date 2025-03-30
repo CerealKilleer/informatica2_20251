@@ -95,10 +95,6 @@
 				"role" : "flags"
 			},
 			{
-				"fragment" : "",
-				"role" : "flags"
-			},
-			{
 				"backtrace" : 2,
 				"fragment" : "../src/liblib_binary_numbers.a",
 				"role" : "libraries"

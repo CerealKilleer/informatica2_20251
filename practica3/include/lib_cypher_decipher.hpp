@@ -8,5 +8,6 @@
 bool cypher_1(uint8_t **, uint32_t, uint32_t, uint32_t);
 bool decipher_1(uint8_t **, uint32_t, uint32_t, uint32_t);
 bool cypher2(uint8_t **, uint32_t, uint32_t, uint32_t);
+bool decipher_2(uint8_t **, uint32_t, uint32_t, uint32_t);
 
 #endif

@@ -53,7 +53,16 @@ namespace {
     return false;
     }
 
-    void circular_shift(uint8_t **bits, uint32_t n)
+    void circular_shift_left(uint8_t **bits, uint32_t n)
+    {
+        uint8_t aux = **bits;
+        for (uint32_t i=0; i < n-1; i++) {
+            *bits[i] = *bits[i + 1];
+        }
+        *bits[n-1] = aux;
+    }
+
+    void circular_shift_right(uint8_t **bits, uint32_t n)
     {
         uint8_t aux = *bits[n-1];
         for (uint32_t i=0; i < n-1; i++) {
@@ -63,32 +72,50 @@ namespace {
     }
 }
 
-bool decipher_1(uint8_t **matrix, uint32_t n, uint32_t rows, uint32_t cols) 
-{
+bool decipher_2(uint8_t **matrix, uint32_t n, uint32_t rows, uint32_t cols) {
     uint8_t **group = new uint8_t*[n];
-    uint8_t m, m_aux;
     uint32_t k = 0;
-
-    change_bits(n,EVERY_ONE,0,0,matrix,rows,cols);
-
-    if (!get_groups(n,group,0,0,matrix,rows,cols)) {
-        std::cout << "No hay suficientes datos" << std::endl;
-        return false;
-    }
-
-    m = compare_zeros_ones(group, n);
 
     for (uint32_t i=0; i < rows; i++) {
         for (uint32_t j=0; j < cols; j++) {
+            group[k++] = &matrix[i][j];
             if (k == n) {
-                change_bits(n,m,i,j,matrix,rows,cols);
-                get_groups(n,group,i,j,matrix,rows,cols);
+                circular_shift_left(group, n);
+                k = 0;
+            }
+        }
+    }
+    
+    if (k)
+        circular_shift_left(group, k);
+    
+    delete[] group;
+    return true;
+}
+
+bool decipher_1(uint8_t **matrix, uint32_t n, uint32_t rows, uint32_t cols) 
+{
+    uint8_t **group = new uint8_t*[n];
+    uint8_t m;
+    uint32_t k = 0;
+
+    m = EVERY_ONE;
+
+    for (uint32_t i=0; i < rows; i++) {
+        for (uint32_t j=0; j < cols; j++) {
+            group[k++] = &matrix[i][j];
+            if (k == n) {
+                change_bits(n,m,group);
                 m = compare_zeros_ones(group, n);
                 k = 0;
             }
-            k++;
         }
     }
+
+    if (k)
+        change_bits(k,m,group);
+
+    delete[] group;
     return true;
 }
 
@@ -96,7 +123,6 @@ bool cypher_1(uint8_t **matrix, uint32_t n, uint32_t rows, uint32_t cols)
 {
     uint8_t **group = new uint8_t*[n]; 
     uint8_t m, m_aux;
-    bool first_group = true;
     uint32_t k = 0;
     
     m = EVERY_ONE;
@@ -105,18 +131,16 @@ bool cypher_1(uint8_t **matrix, uint32_t n, uint32_t rows, uint32_t cols)
         for (uint32_t j=0; j < cols; j++) {
             group[k++] = &matrix[i][j];
             if (k == n) {
-                m = m_aux;
                 m_aux = compare_zeros_ones(group, n);
-                if (first_group) {
-                    first_group = false;
-                    change_bits(m,EVERY_ONE,group);
-                }
                 change_bits(n,m,group);
+                m = m_aux;
                 k = 0;
             }
-            k++;
         }
     }
+
+    if (k)
+        change_bits(k,m,group);
 
     delete [] group;
     return true;
@@ -125,22 +149,20 @@ bool cypher_1(uint8_t **matrix, uint32_t n, uint32_t rows, uint32_t cols)
 bool cypher2(uint8_t **matrix, uint32_t n, uint32_t rows, uint32_t cols)
 {
     uint8_t **group = new uint8_t*[n];
-    uint32_t bits_count = 0;
     uint32_t k = 0;
 
     for (uint32_t i=0; i < rows; i++) {
         for (uint32_t j=0; j < cols; j++) {
             group[k++] = &matrix[i][j];
-            bits_count++;
-            if (!(bits_count % n)) {
-                circular_shift(group, n);
+            if (k == n) {
+                circular_shift_right(group, n);
                 k = 0;
             }
         }
     }
     
     if (k)
-        circular_shift(group, k);
+        circular_shift_right(group, k);
     
     delete[] group;
     return true;

@@ -20,18 +20,21 @@ bool write_file(const char *, uint8_t *, int32_t);
 int main(int argc, char* argv[])
 {
     
-    char * origen = "test.txt";
-    char * destino = "test_c.txt";
-    char * metodo = "c2";
-    uint8_t semilla = 7;
-
-    if (argc > 1) {
+    if (argc != 5) {
         std::cerr << "Uso: " << argv[0] << " [origen] [destino] [metodo] [semilla]" << std::endl;
         return -1;
     }
 
-    
     bool result;
+    char *origen = argv[1];
+    char *destino = argv[2];
+    char *metodo = argv[3];
+    uint8_t semilla = atoi(argv[4]);
+
+    if (semilla == 0) {
+        std::cerr << "Semilla no valida. Subnormal" << std::endl;
+        return EXIT_FAILURE;
+    }
 
     if (strcmp(metodo, "c1") == 0) {
         result = app(cypher_1, origen, destino, semilla);
@@ -39,6 +42,8 @@ int main(int argc, char* argv[])
         result = app(decipher_1, origen, destino, semilla);
     } else if (strcmp(metodo, "c2") == 0) {
         result = app(cypher2, origen, destino, semilla);
+    } else if (strcmp(metodo, "d2") == 0) {
+        result = app(decipher_2, origen, destino, semilla);
     }  else {
         std::cerr << "Metodo no valido" << std::endl;
         result = FAILURE;
@@ -46,7 +51,7 @@ int main(int argc, char* argv[])
 
     if (result == FAILURE) {
         std::cerr << "La aplicación falló satisfactoriamente" << std::endl;
-        return -1;
+        return EXIT_FAILURE;
     }
 
     return 0;

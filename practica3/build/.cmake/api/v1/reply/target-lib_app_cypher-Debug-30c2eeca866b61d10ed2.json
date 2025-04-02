@@ -3,7 +3,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "src/liblib_cypher_decipher.a"
+			"path" : "src/liblib_app_cypher.a"
 		}
 	],
 	"backtrace" : 1,
@@ -12,6 +12,7 @@
 		"commands" : 
 		[
 			"add_library",
+			"target_link_libraries",
 			"target_include_directories"
 		],
 		"files" : 
@@ -26,13 +27,19 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 2,
+				"line" : 3,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 5,
+				"line" : 9,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 7,
 				"parent" : 0
 			}
 		]
@@ -49,7 +56,7 @@
 			"includes" : 
 			[
 				{
-					"backtrace" : 2,
+					"backtrace" : 3,
 					"path" : "/home/yonathan/Documentos/info2/practica3/include"
 				}
 			],
@@ -68,9 +75,20 @@
 			]
 		}
 	],
-	"id" : "lib_cypher_decipher::@145eef247bfb46b6828c",
-	"name" : "lib_cypher_decipher",
-	"nameOnDisk" : "liblib_cypher_decipher.a",
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 2,
+			"id" : "lib_binary_numbers::@145eef247bfb46b6828c"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "lib_cypher_decipher::@145eef247bfb46b6828c"
+		}
+	],
+	"id" : "lib_app_cypher::@145eef247bfb46b6828c",
+	"name" : "lib_app_cypher",
+	"nameOnDisk" : "liblib_app_cypher.a",
 	"paths" : 
 	{
 		"build" : "src",
@@ -91,7 +109,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/lib_cypher_decipher.cpp",
+			"path" : "src/app.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],

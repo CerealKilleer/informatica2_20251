@@ -12,6 +12,12 @@
   "output": "src/CMakeFiles/lib_cypher_decipher.dir/lib_cypher_decipher.cpp.o"
 },
 {
+  "directory": "/home/yonathan/Documentos/info2/practica3/build/src",
+  "command": "/usr/bin/g++  -I/home/yonathan/Documentos/info2/practica3/include -g -std=gnu++20 -o CMakeFiles/lib_app_cypher.dir/app.cpp.o -c /home/yonathan/Documentos/info2/practica3/src/app.cpp",
+  "file": "/home/yonathan/Documentos/info2/practica3/src/app.cpp",
+  "output": "src/CMakeFiles/lib_app_cypher.dir/app.cpp.o"
+},
+{
   "directory": "/home/yonathan/Documentos/info2/practica3/build/bin",
   "command": "/usr/bin/g++  -I/home/yonathan/Documentos/info2/practica3/include -g -std=gnu++20 -o CMakeFiles/practica_03.dir/__/src/main.cpp.o -c /home/yonathan/Documentos/info2/practica3/src/main.cpp",
   "file": "/home/yonathan/Documentos/info2/practica3/src/main.cpp",

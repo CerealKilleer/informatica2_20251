@@ -16,7 +16,8 @@
 		],
 		"files" : 
 		[
-			"bin/CMakeLists.txt"
+			"bin/CMakeLists.txt",
+			"src/CMakeLists.txt"
 		],
 		"nodes" : 
 		[
@@ -36,9 +37,18 @@
 				"parent" : 0
 			},
 			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 9,
+				"parent" : 3
+			},
+			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 7,
+				"line" : 6,
 				"parent" : 0
 			}
 		]
@@ -55,7 +65,7 @@
 			"includes" : 
 			[
 				{
-					"backtrace" : 3,
+					"backtrace" : 5,
 					"path" : "/home/yonathan/Documentos/info2/practica3/include"
 				}
 			],
@@ -83,6 +93,10 @@
 		{
 			"backtrace" : 2,
 			"id" : "lib_cypher_decipher::@145eef247bfb46b6828c"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "lib_app_cypher::@145eef247bfb46b6828c"
 		}
 	],
 	"id" : "practica_03::@90a2315b7a9c97cd24d2",
@@ -96,11 +110,16 @@
 			},
 			{
 				"backtrace" : 2,
+				"fragment" : "../src/liblib_app_cypher.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
 				"fragment" : "../src/liblib_binary_numbers.a",
 				"role" : "libraries"
 			},
 			{
-				"backtrace" : 2,
+				"backtrace" : 4,
 				"fragment" : "../src/liblib_cypher_decipher.a",
 				"role" : "libraries"
 			}

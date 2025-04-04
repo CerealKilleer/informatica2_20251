@@ -16,8 +16,8 @@ char hexa_keys[ROWS][COLS] = {
 };
 
 byte column_index = 0;
-byte row_pins[ROWS] = {8, 7, 6, 5}; 
-byte col_pins[COLS] = {4, 3, 2, 1};
+byte row_pins[ROWS] = {9, 8, 7, 6}; 
+byte col_pins[COLS] = {5, 4, 3, 2};
 
 Keypad custom_keypad = Keypad(makeKeymap(hexa_keys), row_pins, col_pins, ROWS, COLS);
 

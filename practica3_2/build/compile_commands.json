@@ -1,0 +1,32 @@
+[
+{
+  "directory": "/home/yonathan/Documentos/info2/practica3_2/build/src",
+  "command": "/usr/bin/g++  -I/home/yonathan/Documentos/info2/practica3_2/include -g -std=gnu++20 -o CMakeFiles/lib_binary_numbers.dir/lib_binary_numbers.cpp.o -c /home/yonathan/Documentos/info2/practica3_2/src/lib_binary_numbers.cpp",
+  "file": "/home/yonathan/Documentos/info2/practica3_2/src/lib_binary_numbers.cpp",
+  "output": "src/CMakeFiles/lib_binary_numbers.dir/lib_binary_numbers.cpp.o"
+},
+{
+  "directory": "/home/yonathan/Documentos/info2/practica3_2/build/src",
+  "command": "/usr/bin/g++  -I/home/yonathan/Documentos/info2/practica3_2/include -g -std=gnu++20 -o CMakeFiles/lib_cypher_decipher.dir/lib_cypher_decipher.cpp.o -c /home/yonathan/Documentos/info2/practica3_2/src/lib_cypher_decipher.cpp",
+  "file": "/home/yonathan/Documentos/info2/practica3_2/src/lib_cypher_decipher.cpp",
+  "output": "src/CMakeFiles/lib_cypher_decipher.dir/lib_cypher_decipher.cpp.o"
+},
+{
+  "directory": "/home/yonathan/Documentos/info2/practica3_2/build/src",
+  "command": "/usr/bin/g++  -I/home/yonathan/Documentos/info2/practica3_2/include -g -std=gnu++20 -o CMakeFiles/lib_app_cypher.dir/app.cpp.o -c /home/yonathan/Documentos/info2/practica3_2/src/app.cpp",
+  "file": "/home/yonathan/Documentos/info2/practica3_2/src/app.cpp",
+  "output": "src/CMakeFiles/lib_app_cypher.dir/app.cpp.o"
+},
+{
+  "directory": "/home/yonathan/Documentos/info2/practica3_2/build/src",
+  "command": "/usr/bin/g++  -I/home/yonathan/Documentos/info2/practica3_2/include -g -std=gnu++20 -o CMakeFiles/lib_app_cajero.dir/app_cajero.cpp.o -c /home/yonathan/Documentos/info2/practica3_2/src/app_cajero.cpp",
+  "file": "/home/yonathan/Documentos/info2/practica3_2/src/app_cajero.cpp",
+  "output": "src/CMakeFiles/lib_app_cajero.dir/app_cajero.cpp.o"
+},
+{
+  "directory": "/home/yonathan/Documentos/info2/practica3_2/build/bin",
+  "command": "/usr/bin/g++  -I/home/yonathan/Documentos/info2/practica3_2/include -g -std=gnu++20 -o CMakeFiles/practica_03_2.dir/__/src/main.cpp.o -c /home/yonathan/Documentos/info2/practica3_2/src/main.cpp",
+  "file": "/home/yonathan/Documentos/info2/practica3_2/src/main.cpp",
+  "output": "bin/CMakeFiles/practica_03_2.dir/__/src/main.cpp.o"
+}
+]

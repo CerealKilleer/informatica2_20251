@@ -216,22 +216,15 @@ bool crear_usuario(std::string& users_file)
         return false;
     }
     
-    new_user = cedula + "," + pass + "," + std::to_string(saldo) + "\n";
-
-    if (users_file.empty()) {
-        users_file = new_user + '\0';
-    } else {
-        users_file.pop_back();
-        users_file += new_user;
-        users_file += '\0';
-    }
-
-    std::cout << "Usuario creado exitosamente\n";
+    new_user =  cedula + ',' + pass + ',' + std::to_string(saldo) + '\n'; 
+    users_file += new_user;
 
     if (!write_data(USERS_FILE, cypher_1, SEMILLA, users_file)) {
         std::cout << "Error al escribir el archivo de usuarios" << std::endl;
         return false;
     }
+
+    std::cout << "Usuario creado exitosamente\n";
     return true;
 }
 
@@ -295,9 +288,10 @@ bool write_data(const char* data_file, method_ptr metodo, uint32_t semilla,  con
     }
 
     file_out.write((char *)memory_block, rows);
-
+    
     delete[] memory_block;
-
+    file_out.close();
+    
     return true;
 }
 
@@ -338,6 +332,7 @@ void consultar_saldo(std::string& file_string, std::string& user)
     std::string new_user = cedula + "," + pass + "," + std::to_string(saldo);
     file_string.replace(file_string.find(user), user.length(), new_user);
     write_data(USERS_FILE, cypher_1, SEMILLA, file_string);
+    user = new_user;
     std::cout << "Saldo actualizado\n";
 }
 

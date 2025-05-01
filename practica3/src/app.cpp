@@ -11,9 +11,9 @@ bool app_main(char* argv[])
     char *origen = argv[1];
     char *destino = argv[2];
     char *metodo = argv[3];
-    uint8_t semilla = atoi(argv[4]);
+    int16_t semilla = atoi(argv[4]);
 
-    if (semilla == 0) {
+    if (semilla <= 0) {
         std::cerr << "Semilla no valida. Subnormal" << std::endl;
         return EXIT_FAILURE;
     }
@@ -35,6 +35,7 @@ bool app_main(char* argv[])
         std::cerr << "La aplicación falló satisfactoriamente" << std::endl;
         return EXIT_FAILURE;
     }
+    
     return EXIT_SUCCESS;
 }
 

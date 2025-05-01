@@ -1,0 +1,20 @@
+[
+{
+  "directory": "/home/yonathan/Documentos/info2/practica_4/build/src",
+  "command": "/usr/bin/g++  -I/home/yonathan/Documentos/info2/practica_4/include -g -std=gnu++20 -o CMakeFiles/lib_router.dir/router.cpp.o -c /home/yonathan/Documentos/info2/practica_4/src/router.cpp",
+  "file": "/home/yonathan/Documentos/info2/practica_4/src/router.cpp",
+  "output": "src/CMakeFiles/lib_router.dir/router.cpp.o"
+},
+{
+  "directory": "/home/yonathan/Documentos/info2/practica_4/build/src",
+  "command": "/usr/bin/g++  -I/home/yonathan/Documentos/info2/practica_4/include -g -std=gnu++20 -o CMakeFiles/lib_network.dir/network.cpp.o -c /home/yonathan/Documentos/info2/practica_4/src/network.cpp",
+  "file": "/home/yonathan/Documentos/info2/practica_4/src/network.cpp",
+  "output": "src/CMakeFiles/lib_network.dir/network.cpp.o"
+},
+{
+  "directory": "/home/yonathan/Documentos/info2/practica_4/build/bin",
+  "command": "/usr/bin/g++  -I/home/yonathan/Documentos/info2/practica_4/include -g -std=gnu++20 -o CMakeFiles/practica_4.dir/__/src/main.cpp.o -c /home/yonathan/Documentos/info2/practica_4/src/main.cpp",
+  "file": "/home/yonathan/Documentos/info2/practica_4/src/main.cpp",
+  "output": "bin/CMakeFiles/practica_4.dir/__/src/main.cpp.o"
+}
+]

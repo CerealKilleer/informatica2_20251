@@ -345,6 +345,13 @@ void retirar(std::string& file_string, std::string& user)
     std::cout << "Ingrese monto a retirar: ";
     std::cin >> retiro;
 
+    if (saldo < 1000) {
+        std::cout << "No hay suficiente saldo para la transacción < $1000\n";
+        return;
+    }
+
+    saldo -= 1000;
+
     if (std::cin.fail()) {
         std::cin.clear();
         while (std::cin.get() != '\n');

@@ -57,3 +57,39 @@ void Router::show_neighbors(void)
     }
 }
 
+const std::unordered_map<std::string, int> &Router::get_neighbors(void)
+{
+    return neighbors;
+}
+
+std::unordered_map<std::string, int> &Router::get_routing_table(void)
+{
+    return basic_routing_table;
+}
+
+const void Router::show_routing_table(void)
+{
+    std::vector<std::pair<std::string, int>> table (
+        basic_routing_table.begin(),
+        basic_routing_table.end()
+    );
+
+    std::sort(table.begin(), table.end());
+
+    // Encabezado de la tabla
+    std::cout << "+---------------------+---------------------+" << std::endl;
+    std::cout << "| " << std::left << std::setw(20) << "Router ID" 
+              << "| " << std::setw(20) << "Distancia" << "|" << std::endl;
+    std::cout << "+---------------------+---------------------+" << std::endl;
+
+    // Filas de datos
+    for (const auto& [router_id, distance] : table) {
+        if (distance == INT32_MAX)
+            continue;
+        std::cout << "| " << std::left << std::setw(20) << router_id 
+                  << "| " << std::setw(20) << distance << "|" << std::endl;
+    }
+
+    // Pie de tabla
+    std::cout << "+---------------------+---------------------+" << std::endl;
+}

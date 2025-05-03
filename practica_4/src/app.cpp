@@ -239,13 +239,18 @@ bool create_network(const std::string &file_path, Network &net)
     while (archivo >> r1) {
         if (r1 == "-")
             break;
-        if (!net.add_network_router(r1))
+        if (!net.add_network_router(r1)) {
+            archivo.close();
             return false;
+        }
+            
     }
 
     while (archivo >> r1 >> r2 >> cost) {
-        if(!net.connect_router(r1, r2, cost))
+        if(!net.connect_router(r1, r2, cost)) {
+            archivo.close();
             return false;
+        }
     }
 
     archivo.close();

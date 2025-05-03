@@ -4,9 +4,12 @@
 #include <limits>
 #include "network.hpp"
 #include "app.hpp"
+
 constexpr uint8_t num_digis_opc = 4;
 constexpr uint8_t zero = 0;
 constexpr uint8_t num_digis_cost = 10;
+constexpr uint8_t min_cost = 0;
+#define LOG_ERROR(fn, msg) std::cerr << "[App/" << fn << "]: " << msg << std::endl
 
 void main_app(const std::string &file_path)
 {
@@ -105,6 +108,8 @@ void consult_package_cost(Network &net)
         return;
 
     int32_t cost = net.calculate_cost(router_id_1, router_id_2);
+    if (cost < min_cost)
+        return;
     std::cout << "Enviar un paquete desde " << router_id_1 << " a " 
               << router_id_2 << " cuesta: " << cost << std::endl; 
 }
@@ -171,12 +176,12 @@ bool get_router_id(std::string &router_id)
     std::cout << "ID del router: ";
     std::cin >> router_id;
     if (router_id.length() > 8) {
-        std::cout << "[app/get_router_id]: ID del router demasiado grande > 8 caracteres" << std::endl;
+        LOG_ERROR("get_router_id", "ID del router demasiado grande > 8 caracteres");
         return false;
     }
 
     if (router_id.empty()) {
-        std::cout << "[app/get_router_id]: ID del router NULA" << std::endl;
+        LOG_ERROR("get_router_id", "ID del router NULA");
         return false;
     }
     return true;

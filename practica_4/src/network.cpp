@@ -1,4 +1,6 @@
 #include "network.hpp"
+#define LOG_ERROR(fn, msg) std::cerr << "[Network/" << fn << "]: " << msg << std::endl
+#define LOG_SUCESS(fn, msg) std::cout << "[Network/" << fn << "]: " << msg << std::endl
 
 bool Network::router_exists(const std::string &router_id)
 {
@@ -15,12 +17,12 @@ void Network::show_connections(void)
 bool Network::add_network_router(const std::string &router_id)
 {
     if (router_exists(router_id)) {
-        std::cerr << "[Network/add_network_router]: Router: " << router_id << " ya existe" << std::endl;
+        LOG_ERROR("add_network_router", "Router: " + router_id + " ya existe");
         return false;
     }
     routers[router_id] = std::make_unique<Router>(router_id);
     calculate_all_routing_tables();
-    std::cout << "[Network/add_network_router]: Router: " << router_id << " Creado" << std::endl;
+    LOG_SUCESS("add_network_router", "Router: " + router_id + " - Creado");
     return true;
 }
 
@@ -28,7 +30,7 @@ bool Network::remove_network_router(const std::string &router_id)
 {
     std::vector<std::string> to_delete;
     if (!router_exists(router_id)) {
-        std::cerr << "[Network/remove_network_router]: Router: " << router_id << " no existe" << std::endl;
+        LOG_ERROR("remove_network_router", "Router: " + router_id + " - No existe");
         return false;
     }
 
@@ -38,7 +40,7 @@ bool Network::remove_network_router(const std::string &router_id)
     for (auto &id_neigh : to_delete)
         remove_link_router(router_id, id_neigh);
 
-    std::cout << "[Network/remove_network_router]: Router: " << router_id << " eliminado " << std::endl;
+    LOG_SUCESS("remove_network_router", "Router: " + router_id + " eliminado");
     routers.erase(router_id);
     calculate_all_routing_tables();
 
@@ -50,12 +52,12 @@ bool Network::connect_router(const std::string &router_1_id,
                             int32_t cost)
 {
     if (!router_exists(router_1_id) || !router_exists(router_2_id)) {
-        std::cerr << "[Network/connect_router]: Ambos routers deben existir para conectarse" << std::endl;
+        LOG_ERROR("connect_router", "Ambos routers deben existir para conectarse");
         return false;
     }
 
     if (cost < 1) {
-        std::cerr << "[Network/connect_router]: El costo del enlace debe ser positivo" << std::endl;
+        LOG_ERROR("connect_router", "El costo del enlace debe ser positivo");
         return false;
     }
 
@@ -66,7 +68,7 @@ bool Network::connect_router(const std::string &router_1_id,
         return false;
 
     calculate_all_routing_tables();
-    std::cout << "[Network/connect_router]: Enlace establecido" << std::endl;
+    LOG_SUCESS("connect_router", "Enlace establecido");
     return true;
 }
 
@@ -75,23 +77,23 @@ bool Network::update_link_router(const std::string &router_1_id,
                             int32_t cost)
 {
     if (!router_exists(router_1_id) || !router_exists(router_2_id)) {
-        std::cerr << "[Network/connect_router]: Ambos routers deben existir para actualizarse" << std::endl;
+        LOG_ERROR("update_link_router", "Ambos routers deben existir para actualizarse");
         return false;
     }
 
     if (cost < 1) {
-        std::cerr << "[Network/connect_router]: El costo del enlace debe ser positivo" << std::endl;
+        LOG_ERROR("update_link_router", "El nuevo costo del enlace debe ser positivo");
         return false;
     }
 
     if(!routers[router_1_id]->update_link(router_2_id, cost))
         return false;
 
-    if(!routers[router_2_id]->update_link(router_1_id, cost));
+    if(!routers[router_2_id]->update_link(router_1_id, cost))
         return false;
 
     calculate_all_routing_tables();
-    std::cout << "[Network/connect_router]: Enlace actualizado" << std::endl;
+    LOG_SUCESS("update_link_router", "Enlace actualizado");
     return true;
 }
 
@@ -99,7 +101,7 @@ bool Network::remove_link_router(const std::string &router_1_id,
                                 const std::string &router_2_id)
 {
     if (!router_exists(router_1_id) || !router_exists(router_2_id)) {
-        std::cerr << "[Network/connect_router]: Ambos routers deben existir para actualizarse" << std::endl;
+        LOG_ERROR("remove_link_router", "Ambos routers deben existir para eliminar el enlace");
         return false;
     }
 
@@ -110,7 +112,7 @@ bool Network::remove_link_router(const std::string &router_1_id,
         return false;
 
     calculate_all_routing_tables();
-    std::cout << "[Network/connect_router]: Enlace eliminado" << std::endl;
+    LOG_SUCESS("remove_link_router", "Enlace eliminado");
     return true;
 }
 
@@ -185,7 +187,7 @@ void Network::calculate_all_routing_tables(void)
 bool Network::show_routing_table(const std::string &router_id)
 {
     if (!router_exists(router_id)) {
-        std::cerr << "[Network/show_routing_table]: No existe el router: " << router_id << std::endl;
+        LOG_ERROR("show_routing_table", "No existe el router" + router_id);
         return false;
     }
 
@@ -196,7 +198,7 @@ bool Network::show_routing_table(const std::string &router_id)
 bool Network::calculate_min_path(const std::string &start, const std::string &end)
 {
     if (!router_exists(start) || !router_exists(end)) {
-        std::cerr << "[Network/calculate_min_path]: Ambos routers deben existir" << std::endl;
+        LOG_ERROR("calculate_min_path", "Ambos routers deben existir");
         return false;
     }
 
@@ -204,7 +206,7 @@ bool Network::calculate_min_path(const std::string &start, const std::string &en
     path = find_shortest_path(start, end, routers[start]->get_routing_table());
     
     if (path.empty()) {
-        std::cerr << "[Network/calculate_min_path]: No hay camino entre: " << start << " y " << end << std::endl;
+        LOG_ERROR("calculate_min_path", "No hay camino entre: " + start + " y " + end);
         return false;
     }
 
@@ -219,8 +221,8 @@ bool Network::calculate_min_path(const std::string &start, const std::string &en
 int32_t Network::calculate_cost(const std::string &start, const std::string &end)
 {
     if (!router_exists(start) || !router_exists(end)) {
-        std::cerr << "[Network/calculate_cost]: Ambos routers deben existir" << std::endl;
-        return false;
+        LOG_ERROR("calculate_cost", "Ambos routers deben existir");
+        return -1;
     }
 
     return (routers[start]->get_routing_table())[end];

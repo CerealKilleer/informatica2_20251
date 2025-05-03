@@ -3,6 +3,9 @@
 #include <stdint.h>
 #include "router.hpp"
 
+#define LOG_ERROR(fn, msg) std::cerr << "[Router/" << fn << "]: " << msg << std::endl
+#define LOG_SUCESS(fn, msg) std::cout << "[Router/" << fn << "]: " << msg << std::endl
+
 Router::Router(const std::string &id) 
         : m_id(id) 
 {}
@@ -18,35 +21,37 @@ bool Router::add_link(const std::string &id_neigh, int32_t cost)
         return false;
     }
     neighbors[id_neigh] = cost;
-    std::cout << "[Router/add_link]: " << m_id << " -> " << id_neigh << " costo: " << cost << std::endl;
+    LOG_SUCESS("add_link", m_id + " -> " + id_neigh + " - Costo: " + std::to_string(cost));
     return true;
 }
 
 bool Router::update_link(const std::string &id_neigh, int32_t cost)
 {
     if (cost < 1) {
-        std::cout << "[Router/update_link]: El nuevo costo no puede ser negativo";
+        LOG_ERROR("update_link", "El nuevo costo no puede ser negativo");
         return false;
     }
     if (!link_exists(id_neigh)) {
-        std::cout << "[Router/update_link]:" << m_id << "->" << id_neigh << ". No existe" << std::endl;
+        LOG_ERROR("update_link", m_id + " -> " + id_neigh + " - No existe");
         return false;
     }
+
     neighbors[id_neigh] = cost;
-    std::cout << "[Router/update_link]: " 
-                    << m_id << " -> " << id_neigh << " costo: " << cost << std::endl;
+    LOG_SUCESS("update_link", m_id + " -> " + id_neigh + " - costo: " + std::to_string(cost));
+
     return true;
 }
 
 bool Router::remove_link(const std::string &id_neigh)
 {
     if (!link_exists(id_neigh)) {
-        std::cout << "[Router/update_link]:" << m_id << "->" << id_neigh << ". No existe" << std::endl;
+        LOG_ERROR("remove_link", m_id + " -> " + id_neigh + " - No existe");
         return false;
     }
 
     neighbors.erase(id_neigh);
-    std::cout << "[Router/update_link]:" << m_id << "->" << id_neigh << ". Eliminado" << std::endl;
+    LOG_SUCESS("remove_link", m_id + " -> " + id_neigh + " - " + "Eliminado");
+    
     return true;
 }
 

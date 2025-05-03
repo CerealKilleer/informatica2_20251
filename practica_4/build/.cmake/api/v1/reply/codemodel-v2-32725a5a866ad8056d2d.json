@@ -33,7 +33,8 @@
 					"targetIndexes" : 
 					[
 						0,
-						1
+						1,
+						2
 					]
 				},
 				{
@@ -59,7 +60,7 @@
 					"source" : "bin",
 					"targetIndexes" : 
 					[
-						2
+						3
 					]
 				}
 			],
@@ -79,7 +80,8 @@
 					[
 						0,
 						1,
-						2
+						2,
+						3
 					]
 				}
 			],
@@ -87,8 +89,15 @@
 			[
 				{
 					"directoryIndex" : 1,
+					"id" : "lib_app::@145eef247bfb46b6828c",
+					"jsonFile" : "target-lib_app-Debug-f3b9ef187a0396c905fb.json",
+					"name" : "lib_app",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
 					"id" : "lib_network::@145eef247bfb46b6828c",
-					"jsonFile" : "target-lib_network-Debug-ede7ecac5964f75f3eae.json",
+					"jsonFile" : "target-lib_network-Debug-273705ef8d25ee1a0f4e.json",
 					"name" : "lib_network",
 					"projectIndex" : 0
 				},
@@ -102,7 +111,7 @@
 				{
 					"directoryIndex" : 3,
 					"id" : "practica_4::@90a2315b7a9c97cd24d2",
-					"jsonFile" : "target-practica_4-Debug-e35d0a1f02d55392555b.json",
+					"jsonFile" : "target-practica_4-Debug-b624b86dab3eb77fea44.json",
 					"name" : "practica_4",
 					"projectIndex" : 0
 				}

@@ -24,6 +24,27 @@ bool Network::add_network_router(const std::string &router_id)
     return true;
 }
 
+bool Network::remove_network_router(const std::string &router_id)
+{
+    std::vector<std::string> to_delete;
+    if (!router_exists(router_id)) {
+        std::cerr << "[Network/remove_network_router]: Router: " << router_id << " no existe" << std::endl;
+        return false;
+    }
+
+    for (auto &[id_neigh, _] : routers[router_id]->get_neighbors())
+        to_delete.push_back(id_neigh);
+
+    for (auto &id_neigh : to_delete)
+        remove_link_router(router_id, id_neigh);
+
+    std::cout << "[Network/remove_network_router]: Router: " << router_id << " eliminado " << std::endl;
+    routers.erase(router_id);
+    calculate_all_routing_tables();
+
+    return true;
+}
+
 bool Network::connect_router(const std::string &router_1_id, 
                             const std::string &router_2_id, 
                             int32_t cost)
@@ -188,7 +209,7 @@ bool Network::calculate_min_path(const std::string &start, const std::string &en
     }
 
     for (auto router_id : path) {
-        std::cout << "->" << router_id << end;
+        std::cout << "->" << router_id;
     }
 
     std::cout << std::endl;

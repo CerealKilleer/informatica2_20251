@@ -38,5 +38,6 @@ class Network
             const std::string &router_id_2);
         int32_t calculate_cost(const std::string &start, 
                                         const std::string &end);
+        bool remove_network_router(const std::string &router_id);
 };
 #endif

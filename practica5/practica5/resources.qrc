@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/sprites">
+        <file>img/pacman/0.png</file>
+        <file>img/pacman/1.png</file>
+        <file>img/pacman/2.png</file>
+    </qresource>
+    <qresource prefix="/items">
+        <file>img/items/dot.png</file>
+        <file>img/items/pellet.png</file>
+    </qresource>
+</RCC>

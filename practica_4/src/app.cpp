@@ -9,6 +9,7 @@ constexpr uint8_t num_digis_opc = 4;
 constexpr uint8_t zero = 0;
 constexpr uint8_t num_digis_cost = 10;
 constexpr uint8_t min_cost = 0;
+
 #define LOG_ERROR(fn, msg) std::cerr << "[App/" << fn << "]: " << msg << std::endl
 
 void main_app(const std::string &file_path)

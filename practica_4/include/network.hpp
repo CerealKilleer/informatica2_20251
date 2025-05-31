@@ -16,7 +16,7 @@
 class Network
 {
     private:
-        std::unordered_map<std::string, std::shared_ptr<Router>> routers;
+        std::unordered_map<std::string, std::unique_ptr<Router>> routers;
         bool router_exists(const std::string &router_id);
         std::vector<std::string> find_shortest_path(const std::string& start, 
                                                     const std::string& end,

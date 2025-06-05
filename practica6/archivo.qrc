@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/bodies">
+        <file>bodies.txt</file>
+    </qresource>
+</RCC>
